@@ -2,12 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const db = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
+const subjectRoutes = require("./routes/subjectRoutes");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRoutes);
+app.use("/api/subjects", subjectRoutes);
 
 app.get("/", (req, res)=>{
     db.query("SELECT * FROM users", (err, result)=>{

@@ -10,8 +10,16 @@ function App(){
   });
 
   const [users, setUsers] = useState([]);
+  const [subjects, setSubjects] = useState([]);
+  
+  const [subjectData, setSubjectData] = useState({
+    name: "",
+    progress: "",
+  });
+
   useEffect(()=>{
     fetchUsers();
+    fetchSubjects();
   }, []);
 
   const handleChange = (e) => {
@@ -25,6 +33,43 @@ function App(){
     try {
       const res = await API.get("/api/users");
       setUsers(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  const handleSubjectChange = (e) => {
+    setSubjectData({
+      ...subjectData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const fetchSubjects = async () => {
+    try {
+      const res = await API.get("/api/subjects");
+
+      setSubjects(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addSubject = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await API.post(
+        "/api/subjects",
+        subjectData
+      );
+      alert(res.data.message);
+
+      fetchSubjects();
+      setSubjectData({
+        name: "",
+        progress: "",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -87,12 +132,46 @@ function App(){
           Register
         </button>
       </form>
-      <h2>All Users</h2>
+      <br/>
 
+      <h2>All Users</h2>
       {users.map((user)=> (
         <div key={user.id}>
           <p>
             {user.name} - {user.email}
+          </p>
+        </div>
+      ))}
+
+      <h2>Add Subject</h2>
+      <form onSubmit={addSubject}>
+        <input
+          type= "text"
+          name= "name"
+          placeholder= "Subject Name"
+          value={subjectData.name}
+          onChange={handleSubjectChange}
+        />
+        <br/><br/>
+        <input
+          type="number"
+          name="progress"
+          placeholder="Progress %"
+          value={subjectData.progress}
+          onChange={handleSubjectChange}
+        />
+        <br/><br/>
+        <button type="submit">
+          Add Subject
+        </button>
+      </form>
+      <br/>
+
+      <h2>Subjects</h2>
+      {subjects.map((subject)=>(
+        <div key={subject.id}>
+          <p>
+            {subject.name} - {subject.progress}% 
           </p>
         </div>
       ))}
