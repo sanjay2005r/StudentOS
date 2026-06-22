@@ -11,7 +11,8 @@ function App(){
 
   const [users, setUsers] = useState([]);
   const [subjects, setSubjects] = useState([]);
-  
+  const [tasks, setTasks] = useState([]);
+
   const [subjectData, setSubjectData] = useState({
     name: "",
     progress: "",
@@ -20,6 +21,7 @@ function App(){
   useEffect(()=>{
     fetchUsers();
     fetchSubjects();
+    fetchTasks();
   }, []);
 
   const handleChange = (e) => {
@@ -71,6 +73,15 @@ function App(){
         progress: "",
       });
     } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchTasks = async () =>{
+    try {
+      const res = await API.get("/api/tasks");
+      setTasks(res.data);
+    } catch (error){
       console.log(error);
     }
   };
@@ -175,7 +186,19 @@ function App(){
           </p>
         </div>
       ))}
+
+    <h2>Tasks</h2>
+    {tasks.map((task)=> (
+      <div key = {task.id}>
+        <p>
+          {task.title} | {task.deadline} | {task.status}
+        </p>
+      </div>
+    ))}
+
+
     </div>
+
   );
 }
 
