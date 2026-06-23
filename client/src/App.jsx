@@ -13,6 +13,12 @@ function App(){
   const [subjects, setSubjects] = useState([]);
   const [tasks, setTasks] = useState([]);
 
+  const [taskData, setTaskData] = useState({
+    title: "",
+    deadline: "",
+    status: "Pending",
+  });
+
   const [subjectData, setSubjectData] = useState({
     name: "",
     progress: "",
@@ -77,11 +83,39 @@ function App(){
     }
   };
 
+  const handleTaskChange = (e) => {
+    setTaskData({
+      ...taskData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const fetchTasks = async () =>{
     try {
       const res = await API.get("/api/tasks");
       setTasks(res.data);
     } catch (error){
+      console.log(error);
+    }
+  };
+
+  const addTask = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await API.post(
+        "/api/tasks",
+        taskData
+      );
+      alert(res.data.message);
+      fetchTasks();
+
+      setTaskData({
+        title: "",
+        deadline: "",
+        status: "Pending",
+      });
+    } catch (error) {
       console.log(error);
     }
   };
@@ -187,15 +221,48 @@ function App(){
         </div>
       ))}
 
-    <h2>Tasks</h2>
-    {tasks.map((task)=> (
-      <div key = {task.id}>
-        <p>
-          {task.title} | {task.deadline} | {task.status}
-        </p>
-      </div>
-    ))}
+      <h2>Add Task</h2>
+      <form onSubmit={addTask}>
+        <input
+          type="text"
+          name="title"
+          placeholder="Task Title"
+          value={taskData.title}
+          onChange={handleTaskChange}
+        />
+        <br/><br/>
 
+        <input
+          type="date"
+          name="deadline"
+          value={taskData.title}
+          onChange={handleTaskChange}
+        />
+        <br/><br/>
+
+        <select
+          name="status"
+          value={taskData.status}
+          onCjnage={handleChange}
+        >
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <br/><br/>
+        <button type="submit">
+          Add task
+        </button>
+      </form>
+      <br/>
+
+      <h2>Tasks</h2>
+      {tasks.map((task)=> (
+        <div key = {task.id}>
+          <p>
+            {task.title} | {task.deadline} | {task.status}
+          </p>
+        </div>
+      ))}
 
     </div>
 
