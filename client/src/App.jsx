@@ -12,6 +12,12 @@ function App(){
   const [users, setUsers] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [studyHours, setStudyHours] = useState([]);
+
+  const [studyData, setStudyData] = useState({
+    study_date: "",
+    hours: "",
+  });
 
   const [taskData, setTaskData] = useState({
     title: "",
@@ -28,6 +34,8 @@ function App(){
     fetchUsers();
     fetchSubjects();
     fetchTasks();
+    fetchStudyHours();
+
   }, []);
 
   const handleChange = (e) => {
@@ -90,6 +98,25 @@ function App(){
     });
   };
 
+  const handleStudyChange = (e) => {
+    setStudyData({
+      ...studyData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  
+  const fetchStudyHours = async () => {
+    try {
+      const res = await API.get("/api/study");
+
+      setStudyHours(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   const fetchTasks = async () =>{
     try {
       const res = await API.get("/api/tasks");
@@ -98,6 +125,28 @@ function App(){
       console.log(error);
     }
   };
+
+  const addStudyHour = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await API.post(
+        "/api/study",
+        studyData
+      );
+      alert(res.data.message);
+
+      fetchStudyHours();
+
+      setStudyData({
+        study_date: "",
+        hours: "",
+      });
+    } catch (error){
+      console.log(error);
+    }
+  };
+
 
   const addTask = async (e) => {
     e.preventDefault();
@@ -235,7 +284,7 @@ function App(){
         <input
           type="date"
           name="deadline"
-          value={taskData.title}
+          value={taskData.deadline}
           onChange={handleTaskChange}
         />
         <br/><br/>
@@ -243,7 +292,7 @@ function App(){
         <select
           name="status"
           value={taskData.status}
-          onCjnage={handleChange}
+          onChange={handleChange}
         >
           <option value="Pending">Pending</option>
           <option value="Completed">Completed</option>
@@ -263,6 +312,41 @@ function App(){
           </p>
         </div>
       ))}
+      <br/>
+      <h2>Study Hours</h2>
+      <form onSubmit={addStudyHour}>
+        <input
+          type="date"
+          name="study_date"
+          value={studyData.study_date}
+          onChange={handleStudyChange}
+        />
+        <br/><br/>
+
+        <input
+          type="number"
+          name="hours"
+          placeholder="Hours studied"
+          value={studyData.hours}
+          onChange={handleStudyChange}
+        />
+        <br/><br/>
+
+        <button type="submit">
+          Add Study Hours
+        </button>
+      </form>
+
+      <br/>
+
+      {studyHours.map((study)=> (
+        <div key={study.id}>
+          <p>
+            {study.study_date} - {study.hours} hrs
+          </p>
+        </div>
+      ))}
+      <br/>
 
     </div>
 
