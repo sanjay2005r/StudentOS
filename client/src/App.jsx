@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from "react";
+import "./App.css";
 import API from "./api/api";
+import { toFormData } from "axios";
 
 function App(){
   const [formData, setFormData] = useState({
@@ -19,6 +21,86 @@ function App(){
     hours: "",
   });
 
+  const totalSubjects = subjects.length;
+
+  const totalTasks = tasks.length;
+
+  const totalStudyHours = studyHours.reduce(
+    (sum, study) => sum + Number(study.hours),
+    0
+  );
+
+  const pendingTasks = tasks.filter(
+    (task) => task.status === "Pending"
+  ).length;
+
+  const averageStudyHours =
+    studyHours.length > 0
+      ? (
+        totalStudyHours /
+        studyHours.length
+        ).toFixed(1)
+      : 0;
+
+  const productivityScore = Math.max(
+    0,
+    Math.round(
+      averageStudyHours * 10 -
+      pendingTasks * 5
+    )
+  );
+
+  let productivityStatus = "";
+  if (productivityScore >= 70){
+    productivityStatus = "🔥 Excellent";
+  }
+  else if (productivityScore >= 40) {
+    productivityStatus = "⚡ Good"
+  }
+  else {
+    productivityStatus = "😴 Needs Improvement"
+  }
+
+  let motivation = "";
+
+  if (productivityScore >= 70) {
+    motivation = "🔥 You're on fire today!";
+  }
+  else if (productivityScore >= 40) {
+    motivation = "⚡ Keep pushing, you're doing well!";
+  }
+  else {
+    motivation = "😴 Time to lock in and study!";
+  }
+
+  const today = new Date()
+    .toISOString()
+    .split("T")[0];
+
+  const studiedToday = studyHours.some(
+    (study) => study.study_date === today
+  );
+
+  const studyStreak = studiedToday ? 1 : 0;
+
+  const dailyGoal = 5;
+  const todayStudyHours = studyHours
+    .filter(
+      (study) => study.study_date === today
+    )
+    .reduce(
+      (sum, study) => sum + Number(study.hours),
+      0
+    );
+  
+  const goalProgress = 
+    todayStudyHours > 0 ? Math.min(
+      100,
+      Math.round(
+        (todayStudyHours / dailyGoal) * 100
+      )
+    )
+  : 0;
   const [taskData, setTaskData] = useState({
     title: "",
     deadline: "",
@@ -192,8 +274,50 @@ function App(){
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>StudentOS</h1>
+      <br/>
+      <div className="dashboard">
+        <h2>Dashboard</h2>
+        <p>
+          📚 Subjects: {totalSubjects}
+        </p>
+        <p>
+          📝 Tasks: {totalTasks}
+        </p>
+        <p>
+          ⏰ Study Hours: {totalStudyHours}
+        </p>
+        <p>
+          ⚠️ Pending Tasks: {pendingTasks}
+        </p>
+        <p>
+          📈 Average Hours: {averageStudyHours}
+        </p>
+        <p>
+          🚀 Productivity Score: {productivityScore}
+        </p>
+        <p>
+          🎯 Productivity Status: {productivityStatus}
+        </p>
+        <p>
+          {motivation}
+        </p>
+        <p>
+          🔥 Study Streak: {studyStreak} Days
+        </p>
+        <p>
+          🎯 Daily Goal: {dailyGoal} hrs
+        </p>
+        <p>
+          📚 Today's Study: {todayStudyHours} hrs
+        </p>
+        <p>
+          📊 Goal Progress:{goalProgress}%
+        </p>
+        <hr/>
+      </div>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -292,7 +416,7 @@ function App(){
         <select
           name="status"
           value={taskData.status}
-          onChange={handleChange}
+          onChange={handleTaskChange}
         >
           <option value="Pending">Pending</option>
           <option value="Completed">Completed</option>
