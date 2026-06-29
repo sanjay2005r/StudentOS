@@ -279,43 +279,56 @@ function App(){
       <br/>
       <div className="dashboard">
         <h2>Dashboard</h2>
+        <div className="dashboard-grid">
+          <div className="stat-card">
+            <h3>📚 Subjects</h3>
+            <p>{totalSubjects}</p>
+          </div>
+          <div className="stat-card">
+            <h3>📝 Tasks</h3>
+            <p>{totalTasks}</p>
+          </div>
+          <div className="stat-card">
+            <h3>⚠️ Pending</h3>
+            <p>{pendingTasks}</p>
+          </div>
+          <div className="stat-card">
+            <h3>⏰ Hours</h3>
+            <p>{totalStudyHours}</p>
+          </div>
+          <div className="stat-card">
+            <h3>📈 Average</h3>
+            <p>{averageStudyHours}</p>
+          </div>
+          <div className="stat-card">
+            <h3>🚀 Score</h3>
+            <p>{productivityScore}</p>
+          </div>
+        </div>
+        <br/>
         <p>
-          📚 Subjects: {totalSubjects}
-        </p>
-        <p>
-          📝 Tasks: {totalTasks}
-        </p>
-        <p>
-          ⏰ Study Hours: {totalStudyHours}
-        </p>
-        <p>
-          ⚠️ Pending Tasks: {pendingTasks}
-        </p>
-        <p>
-          📈 Average Hours: {averageStudyHours}
-        </p>
-        <p>
-          🚀 Productivity Score: {productivityScore}
-        </p>
-        <p>
-          🎯 Productivity Status: {productivityStatus}
+          🎯 Productivity Status:
+          {productivityStatus}
         </p>
         <p>
           {motivation}
         </p>
         <p>
-          🔥 Study Streak: {studyStreak} Days
+          🔥 Study Streak:
+          {studyStreak} Day
         </p>
         <p>
-          🎯 Daily Goal: {dailyGoal} hrs
+          🎯 Daily Goal:
+          {dailyGoal} hrs
         </p>
         <p>
-          📚 Today's Study: {todayStudyHours} hrs
+          📚 Today's Study:
+          {todayStudyHours} hrs
         </p>
         <p>
-          📊 Goal Progress:{goalProgress}%
+          📊 Goal Progress:
+          {goalProgress}%
         </p>
-        <hr/>
       </div>
 
       <form onSubmit={handleSubmit}>
