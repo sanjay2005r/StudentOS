@@ -15,6 +15,7 @@ function App(){
   const [subjects, setSubjects] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [studyHours, setStudyHours] = useState([]);
+  const [timer, setTimer] = useState(25);
 
   const [studyData, setStudyData] = useState({
     study_date: "",
@@ -275,32 +276,42 @@ function App(){
 
   return (
     <div className="container">
-      <h1>StudentOS</h1>
+      <h1>
+        🎓 StudentOS
+      </h1>
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: "20px"
+        }}
+      >
+        Saves Our Students 🚀
+      </p>
       <br/>
       <div className="dashboard">
         <h2>Dashboard</h2>
         <div className="dashboard-grid">
-          <div className="stat-card">
+          <div className="stat-card subjects-card">
             <h3>📚 Subjects</h3>
             <p>{totalSubjects}</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card tasks-card">
             <h3>📝 Tasks</h3>
             <p>{totalTasks}</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card pending-card">
             <h3>⚠️ Pending</h3>
             <p>{pendingTasks}</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card hours-card">
             <h3>⏰ Hours</h3>
             <p>{totalStudyHours}</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card average-card">
             <h3>📈 Average</h3>
             <p>{averageStudyHours}</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card score-card">
             <h3>🚀 Score</h3>
             <p>{productivityScore}</p>
           </div>
@@ -484,6 +495,19 @@ function App(){
         </div>
       ))}
       <br/>
+
+      <h2>🍅 Pomodoro</h2>
+      <div className="dashboard">
+        <h1>
+          {timer}:00
+        </h1>
+        <button>
+          Start
+        </button>
+        <button>
+          Reset
+        </button>
+      </div>
 
     </div>
 
