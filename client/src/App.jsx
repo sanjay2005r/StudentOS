@@ -1,5 +1,18 @@
 
 import { useState, useEffect } from "react";
+
+import {
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
+
+import Dashboard from "./pages/Dashboard";
+import Subjects from "./pages/Subjects";
+import Tasks from "./pages/Tasks";
+import Study from "./pages/Study";
+import Pomodoro from "./pages/Pomodoro";
+
 import "./App.css";
 import API from "./api/api";
 import { toFormData } from "axios";
@@ -274,243 +287,299 @@ function App(){
     }
   };
 
+  // return (
+  //   <div className="container">
+  //     <h1>
+  //       🎓 StudentOS
+  //     </h1>
+  //     <p
+  //       style={{
+  //         textAlign: "center",
+  //         marginBottom: "20px"
+  //       }}
+  //     >
+  //       Saves Our Students 🚀
+  //     </p>
+  //     <br/>
+  //     <div className="dashboard">
+  //       <h2>Dashboard</h2>
+  //       <div className="dashboard-grid">
+  //         <div className="stat-card subjects-card">
+  //           <h3>📚 Subjects</h3>
+  //           <p>{totalSubjects}</p>
+  //         </div>
+  //         <div className="stat-card tasks-card">
+  //           <h3>📝 Tasks</h3>
+  //           <p>{totalTasks}</p>
+  //         </div>
+  //         <div className="stat-card pending-card">
+  //           <h3>⚠️ Pending</h3>
+  //           <p>{pendingTasks}</p>
+  //         </div>
+  //         <div className="stat-card hours-card">
+  //           <h3>⏰ Hours</h3>
+  //           <p>{totalStudyHours}</p>
+  //         </div>
+  //         <div className="stat-card average-card">
+  //           <h3>📈 Average</h3>
+  //           <p>{averageStudyHours}</p>
+  //         </div>
+  //         <div className="stat-card score-card">
+  //           <h3>🚀 Score</h3>
+  //           <p>{productivityScore}</p>
+  //         </div>
+  //       </div>
+  //       <br/>
+  //       <p>
+  //         🎯 Productivity Status:
+  //         {productivityStatus}
+  //       </p>
+  //       <p>
+  //         {motivation}
+  //       </p>
+  //       <p>
+  //         🔥 Study Streak:
+  //         {studyStreak} Day
+  //       </p>
+  //       <p>
+  //         🎯 Daily Goal:
+  //         {dailyGoal} hrs
+  //       </p>
+  //       <p>
+  //         📚 Today's Study:
+  //         {todayStudyHours} hrs
+  //       </p>
+  //       <p>
+  //         📊 Goal Progress:
+  //         {goalProgress}%
+  //       </p>
+  //     </div>
+
+  //     <form onSubmit={handleSubmit}>
+  //       <input
+  //         type="text"
+  //         name="name"
+  //         placeholder="Enter Name"
+  //         onChange={handleChange}
+  //         value={formData.name}
+  //       />
+  //       <br/><br/>
+
+  //       <input
+  //         type="email"
+  //         name="email"
+  //         placeholder="Enter Email"
+  //         onChange={handleChange}
+  //         value={formData.email}
+  //       />
+  //       <br/><br/>
+
+  //       <input
+  //         type="password"
+  //         name="password"
+  //         placeholder="Enter Password"
+  //         onChange={handleChange}
+  //         value={formData.password}
+  //       />
+  //       <br/><br/>
+
+  //       <button type="submit">
+  //         Register
+  //       </button>
+  //     </form>
+  //     <br/>
+
+  //     <h2>All Users</h2>
+  //     {users.map((user)=> (
+  //       <div key={user.id}>
+  //         <p>
+  //           {user.name} - {user.email}
+  //         </p>
+  //       </div>
+  //     ))}
+
+  //     <h2>Add Subject</h2>
+  //     <form onSubmit={addSubject}>
+  //       <input
+  //         type= "text"
+  //         name= "name"
+  //         placeholder= "Subject Name"
+  //         value={subjectData.name}
+  //         onChange={handleSubjectChange}
+  //       />
+  //       <br/><br/>
+  //       <input
+  //         type="number"
+  //         name="progress"
+  //         placeholder="Progress %"
+  //         value={subjectData.progress}
+  //         onChange={handleSubjectChange}
+  //       />
+  //       <br/><br/>
+  //       <button type="submit">
+  //         Add Subject
+  //       </button>
+  //     </form>
+  //     <br/>
+
+  //     <h2>Subjects</h2>
+  //     {subjects.map((subject)=>(
+  //       <div key={subject.id}>
+  //         <p>
+  //           {subject.name} - {subject.progress}% 
+  //         </p>
+  //       </div>
+  //     ))}
+
+  //     <h2>Add Task</h2>
+  //     <form onSubmit={addTask}>
+  //       <input
+  //         type="text"
+  //         name="title"
+  //         placeholder="Task Title"
+  //         value={taskData.title}
+  //         onChange={handleTaskChange}
+  //       />
+  //       <br/><br/>
+
+  //       <input
+  //         type="date"
+  //         name="deadline"
+  //         value={taskData.deadline}
+  //         onChange={handleTaskChange}
+  //       />
+  //       <br/><br/>
+
+  //       <select
+  //         name="status"
+  //         value={taskData.status}
+  //         onChange={handleTaskChange}
+  //       >
+  //         <option value="Pending">Pending</option>
+  //         <option value="Completed">Completed</option>
+  //       </select>
+  //       <br/><br/>
+  //       <button type="submit">
+  //         Add task
+  //       </button>
+  //     </form>
+  //     <br/>
+
+  //     <h2>Tasks</h2>
+  //     {tasks.map((task)=> (
+  //       <div key = {task.id}>
+  //         <p>
+  //           {task.title} | {task.deadline} | {task.status}
+  //         </p>
+  //       </div>
+  //     ))}
+  //     <br/>
+  //     <h2>Study Hours</h2>
+  //     <form onSubmit={addStudyHour}>
+  //       <input
+  //         type="date"
+  //         name="study_date"
+  //         value={studyData.study_date}
+  //         onChange={handleStudyChange}
+  //       />
+  //       <br/><br/>
+
+  //       <input
+  //         type="number"
+  //         name="hours"
+  //         placeholder="Hours studied"
+  //         value={studyData.hours}
+  //         onChange={handleStudyChange}
+  //       />
+  //       <br/><br/>
+
+  //       <button type="submit">
+  //         Add Study Hours
+  //       </button>
+  //     </form>
+
+  //     <br/>
+
+  //     {studyHours.map((study)=> (
+  //       <div key={study.id}>
+  //         <p>
+  //           {study.study_date} - {study.hours} hrs
+  //         </p>
+  //       </div>
+  //     ))}
+  //     <br/>
+
+  //     <h2>🍅 Pomodoro</h2>
+  //     <div className="dashboard">
+  //       <h1>
+  //         {timer}:00
+  //       </h1>
+  //       <button>
+  //         Start
+  //       </button>
+  //       <button>
+  //         Reset
+  //       </button>
+  //     </div>
+
+  //   </div>
+
+  // );
   return (
     <div className="container">
-      <h1>
-        🎓 StudentOS
-      </h1>
-      <p
-        style={{
-          textAlign: "center",
-          marginBottom: "20px"
-        }}
-      >
-        Saves Our Students 🚀
-      </p>
-      <br/>
-      <div className="dashboard">
-        <h2>Dashboard</h2>
-        <div className="dashboard-grid">
-          <div className="stat-card subjects-card">
-            <h3>📚 Subjects</h3>
-            <p>{totalSubjects}</p>
-          </div>
-          <div className="stat-card tasks-card">
-            <h3>📝 Tasks</h3>
-            <p>{totalTasks}</p>
-          </div>
-          <div className="stat-card pending-card">
-            <h3>⚠️ Pending</h3>
-            <p>{pendingTasks}</p>
-          </div>
-          <div className="stat-card hours-card">
-            <h3>⏰ Hours</h3>
-            <p>{totalStudyHours}</p>
-          </div>
-          <div className="stat-card average-card">
-            <h3>📈 Average</h3>
-            <p>{averageStudyHours}</p>
-          </div>
-          <div className="stat-card score-card">
-            <h3>🚀 Score</h3>
-            <p>{productivityScore}</p>
-          </div>
-        </div>
-        <br/>
-        <p>
-          🎯 Productivity Status:
-          {productivityStatus}
-        </p>
-        <p>
-          {motivation}
-        </p>
-        <p>
-          🔥 Study Streak:
-          {studyStreak} Day
-        </p>
-        <p>
-          🎯 Daily Goal:
-          {dailyGoal} hrs
-        </p>
-        <p>
-          📚 Today's Study:
-          {todayStudyHours} hrs
-        </p>
-        <p>
-          📊 Goal Progress:
-          {goalProgress}%
-        </p>
-      </div>
+      <h1>🎓 StudentOS</h1>
+      <nav>
+        <Link to="/">
+          Dashboard
+        </Link>
+        {" | "}
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter Name"
-          onChange={handleChange}
-          value={formData.name}
-        />
-        <br/><br/>
+        <Link to="/subjects">
+          Subjects
+        </Link>
+        {" | "}
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email"
-          onChange={handleChange}
-          value={formData.email}
-        />
-        <br/><br/>
+        <Link to="/tasks">
+          Tasks
+        </Link>
+        {" | "}
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-          onChange={handleChange}
-          value={formData.password}
-        />
-        <br/><br/>
+        <Link to="/study">
+          Study
+        </Link>
+        {" | "}
 
-        <button type="submit">
-          Register
-        </button>
-      </form>
+        <Link to="/pomodoro">
+          Pomodoro
+        </Link>
+      </nav>
       <br/>
 
-      <h2>All Users</h2>
-      {users.map((user)=> (
-        <div key={user.id}>
-          <p>
-            {user.name} - {user.email}
-          </p>
-        </div>
-      ))}
-
-      <h2>Add Subject</h2>
-      <form onSubmit={addSubject}>
-        <input
-          type= "text"
-          name= "name"
-          placeholder= "Subject Name"
-          value={subjectData.name}
-          onChange={handleSubjectChange}
+      <Routes>
+        <Route
+          path="/"
+          element={<Dashboard />}
         />
-        <br/><br/>
-        <input
-          type="number"
-          name="progress"
-          placeholder="Progress %"
-          value={subjectData.progress}
-          onChange={handleSubjectChange}
+        <Route
+          path="/subjects"
+          element={<Subjects />}
         />
-        <br/><br/>
-        <button type="submit">
-          Add Subject
-        </button>
-      </form>
-      <br/>
-
-      <h2>Subjects</h2>
-      {subjects.map((subject)=>(
-        <div key={subject.id}>
-          <p>
-            {subject.name} - {subject.progress}% 
-          </p>
-        </div>
-      ))}
-
-      <h2>Add Task</h2>
-      <form onSubmit={addTask}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Task Title"
-          value={taskData.title}
-          onChange={handleTaskChange}
+        <Route
+          path="/tasks"
+          element={<Tasks />}
         />
-        <br/><br/>
-
-        <input
-          type="date"
-          name="deadline"
-          value={taskData.deadline}
-          onChange={handleTaskChange}
+        <Route
+          path="/study"
+          element={<Study />}
         />
-        <br/><br/>
-
-        <select
-          name="status"
-          value={taskData.status}
-          onChange={handleTaskChange}
-        >
-          <option value="Pending">Pending</option>
-          <option value="Completed">Completed</option>
-        </select>
-        <br/><br/>
-        <button type="submit">
-          Add task
-        </button>
-      </form>
-      <br/>
-
-      <h2>Tasks</h2>
-      {tasks.map((task)=> (
-        <div key = {task.id}>
-          <p>
-            {task.title} | {task.deadline} | {task.status}
-          </p>
-        </div>
-      ))}
-      <br/>
-      <h2>Study Hours</h2>
-      <form onSubmit={addStudyHour}>
-        <input
-          type="date"
-          name="study_date"
-          value={studyData.study_date}
-          onChange={handleStudyChange}
+        <Route
+          path="/pomodoro"
+          element={<Pomodoro />}
         />
-        <br/><br/>
 
-        <input
-          type="number"
-          name="hours"
-          placeholder="Hours studied"
-          value={studyData.hours}
-          onChange={handleStudyChange}
-        />
-        <br/><br/>
-
-        <button type="submit">
-          Add Study Hours
-        </button>
-      </form>
-
-      <br/>
-
-      {studyHours.map((study)=> (
-        <div key={study.id}>
-          <p>
-            {study.study_date} - {study.hours} hrs
-          </p>
-        </div>
-      ))}
-      <br/>
-
-      <h2>🍅 Pomodoro</h2>
-      <div className="dashboard">
-        <h1>
-          {timer}:00
-        </h1>
-        <button>
-          Start
-        </button>
-        <button>
-          Reset
-        </button>
-      </div>
+      </Routes>
 
     </div>
-
   );
 }
 
