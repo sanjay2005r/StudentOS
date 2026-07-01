@@ -7,6 +7,8 @@ import {
   Link,
 } from "react-router-dom";
 
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Subjects from "./pages/Subjects";
 import Tasks from "./pages/Tasks";
@@ -526,7 +528,10 @@ function App(){
 
   // );
   return (
-    <div className="container">
+    <div className="app-layout">
+      <Sidebar/>
+      <div className="main-content">
+        <Navbar/>
       <h1>🎓 StudentOS</h1>
       <nav>
         <Link to="/">
@@ -578,7 +583,7 @@ function App(){
         />
 
       </Routes>
-
+      </div>
     </div>
   );
 }
