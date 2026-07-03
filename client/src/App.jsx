@@ -30,7 +30,8 @@ function App(){
   const [subjects, setSubjects] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [studyHours, setStudyHours] = useState([]);
-  const [timer, setTimer] = useState(25);
+  const [timer, setTimer] = useState(25 * 60);
+  const [isRunning, setIsRunning] = useState(false);
 
   const [studyData, setStudyData] = useState({
     study_date: "",
@@ -135,6 +136,18 @@ function App(){
     fetchStudyHours();
 
   }, []);
+
+  // ---------------------------------------------
+  useEffect(() => {
+    let interval;
+    if (isRunning && timer > 0){
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isRunning, timer]);
+  // ---------------------------------------------
 
   const handleChange = (e) => {
     setFormData({
@@ -289,6 +302,23 @@ function App(){
     }
   };
 
+  const startTimer = () => {
+    setIsRunning(true);
+  };
+
+  const pauseTimer = () => {
+    setIsRunning(false);
+  };
+
+  const resetTimer = () => {
+    setIsRunning(false);
+    setTimer(25 * 60);
+  };
+
+  const minutes = Math.floor(timer / 60);
+  
+  const seconds = timer % 60;
+  
   // return (
   //   <div className="container">
   //     <h1>
@@ -531,7 +561,9 @@ function App(){
     <div className="app-layout">
       <Sidebar/>
       <div className="main-content">
-        <Navbar/>
+        <Navbar
+          pendingTasks={pendingTasks}
+        />
       <h1>🎓 StudentOS</h1>
       <nav>
         <Link to="/">
@@ -614,7 +646,17 @@ function App(){
           path="/pomodoro"
           element={
             <Pomodoro
-              timer={timer}
+              timer={
+                `${minutes}:${
+                  seconds
+                    .toString()
+                    .padStart(2, "0")
+                }`
+              }
+              startTimer={startTimer}
+              pauseTimer={pauseTimer}
+              resetTimer={resetTimer}
+              isRunning={isRunning}
             />
           }
         />

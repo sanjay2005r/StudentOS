@@ -1,11 +1,13 @@
-function Navbar() {
+function Navbar({
+    pendingTasks,
+}) {
     return (
         <div className="navbar">
             <h3>
                 Welcome, Sanjay 👋
             </h3>
             <div>
-                🔔 Notifications
+                🔔 {pendingTasks}
 
                 &nbsp;&nbsp;&nbsp;
 
