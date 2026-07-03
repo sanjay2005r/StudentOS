@@ -563,23 +563,60 @@ function App(){
       <Routes>
         <Route
           path="/"
-          element={<Dashboard />}
+          element={
+            <Dashboard
+              totalSubjects={totalSubjects}
+              totalTasks={totalTasks}
+              pendingTasks={pendingTasks}
+              totalStudyHours={totalStudyHours}
+              averageStudyHours={averageStudyHours}
+              productivityScore={productivityScore}
+              productivityStatus={productivityStatus}
+              motivation={motivation}
+              studyStreak={studyStreak}
+            />
+          }
         />
         <Route
           path="/subjects"
-          element={<Subjects />}
+          element={
+            <Subjects 
+              subjects={subjects}
+              subjectData={subjectData}
+              handleSubjectChange={handleSubjectChange}
+              addSubject={addSubject}
+            />
+          }
         />
         <Route
           path="/tasks"
-          element={<Tasks />}
+          element={
+            <Tasks 
+              tasks={tasks}
+              taskData={taskData}
+              handleTaskChange={handleTaskChange}
+              addTask={addTask}
+            />
+          }
         />
         <Route
           path="/study"
-          element={<Study />}
+          element={
+            <Study 
+              studyHours={studyHours}
+              studyData={studyData}
+              handleStudyChange={handleStudyChange}
+              addStudyHour={addStudyHour}
+            />
+          }
         />
         <Route
           path="/pomodoro"
-          element={<Pomodoro />}
+          element={
+            <Pomodoro
+              timer={timer}
+            />
+          }
         />
 
       </Routes>

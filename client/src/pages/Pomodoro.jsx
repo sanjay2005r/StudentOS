@@ -1,8 +1,19 @@
-function Pomodoro() {
+function Pomodoro({ timer }) {
     return (
-        <h1>
-            Pomodoro page
-        </h1>
+        <div className="dashboard">
+            <h2>
+                🍅 Pomodoro
+            </h2>
+            <h1>
+                {timer}:00
+            </h1>
+            <button>
+                Start
+            </button>
+            <button>
+                Reset
+            </button>
+        </div>
     );
 }
 
