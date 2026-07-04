@@ -3,6 +3,7 @@ function Tasks({
     taskData,
     handleTaskChange,
     addTask,
+    completeTask,
 }) {
     return (
         <div>
@@ -49,7 +50,7 @@ function Tasks({
             <br/>
 
             <h2>Tasks</h2>
-            {tasks.map((task) => (
+            {/* {tasks.map((task) => (
                 <div key={task.id}>
                     <p>
                         {task.title}
@@ -58,6 +59,40 @@ function Tasks({
                         {" | "}
                         {task.status}
                     </p>
+                </div>
+            ))} */}
+            {tasks.map((task) => (
+                <div
+                    className="task-card"
+                    key={task.id}
+                >
+                    <h3>
+                        📚 {task.title}
+                    </h3>
+                    <p>
+                        📅 {task.deadline}
+                    </p>
+                    {/* <br/> */}
+                    <span
+                        className={
+                            task.status === "Completed"? "completed" : "pending"
+                        }
+                    >
+                        {task.status}
+                    </span>
+                    <br/> <br/>
+                    {
+                        task.status ===
+                        "Pending" && (
+                            <button
+                                onClick={() =>
+                                    completeTask(task.id)
+                                }
+                            >
+                                ✓ Complete
+                            </button>
+                        )
+                    }
                 </div>
             ))}
         </div>

@@ -32,6 +32,7 @@ function App(){
   const [studyHours, setStudyHours] = useState([]);
   const [timer, setTimer] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   const [studyData, setStudyData] = useState({
     study_date: "",
@@ -279,7 +280,19 @@ function App(){
       console.log(error);
     }
   };
-
+// ---------------------------------------------------
+  const completeTask =
+    async (id) => {
+      try {
+        await API.put(
+          `/api/tasks/${id}`
+        );
+        fetchTasks();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+// ***************************************************
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -304,14 +317,28 @@ function App(){
 
   const startTimer = () => {
     setIsRunning(true);
+    setHasStarted(true);
   };
 
   const pauseTimer = () => {
     setIsRunning(false);
   };
 
+  const setPomodoro25 = () => {
+    setIsRunning(false);
+    setHasStarted(false);
+    setTimer(25 * 60);
+  };
+
+  const setPomodoro50 = () => {
+    setIsRunning(false);
+    setHasStarted(false);
+    setTimer(50 * 60);
+  };
+
   const resetTimer = () => {
     setIsRunning(false);
+    setHasStarted(false);
     setTimer(25 * 60);
   };
 
@@ -628,6 +655,7 @@ function App(){
               taskData={taskData}
               handleTaskChange={handleTaskChange}
               addTask={addTask}
+              completeTask={completeTask}
             />
           }
         />
@@ -646,17 +674,16 @@ function App(){
           path="/pomodoro"
           element={
             <Pomodoro
-              timer={
-                `${minutes}:${
-                  seconds
+              timer={`${minutes}:${seconds
                     .toString()
-                    .padStart(2, "0")
-                }`
-              }
+                    .padStart(2, "0")}`}
               startTimer={startTimer}
               pauseTimer={pauseTimer}
               resetTimer={resetTimer}
               isRunning={isRunning}
+              hasStarted={hasStarted}
+              setPomodoro25={setPomodoro25}
+              setPomodoro50={setPomodoro50}
             />
           }
         />

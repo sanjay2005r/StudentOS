@@ -30,7 +30,25 @@ const getTasks = (req, res) => {
     });
 };
 
+const updateTaskStatus = (req, res) => {
+    const { id } = req.params;
+    db.query(
+        "UPDATE tasks SET status = 'Completed' WHERE id=?",
+        [id],
+        (err, result) => {
+            if(err) {
+                return res
+                    .status(500)
+                    .json(err);
+            }
+            res.json({
+                message: "Task Updated",
+            });
+        }
+    );
+};
 module.exports = {
     addTask,
     getTasks,
+    updateTaskStatus,
 };

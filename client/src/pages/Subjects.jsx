@@ -39,11 +39,25 @@ function Subjects({
             <h2>Subjects</h2>
 
             {subjects.map((subject) => (
-                <div key={subject.id}>
+                <div
+                    className="subject-card"
+                    key={subject.id}
+                >
+                    <h3>
+                        📚 {subject.name}
+                    </h3>
+                    <div className="progress-bar">
+                        <div
+                            className="progress-fill"
+                            style={{
+                                width: `${subject.progress}%`
+                            }}
+                        >
+                        </div>
+                    </div>
                     <p>
-                        {subject.name}
-                        {" - "}
                         {subject.progress}%
+                        Complete
                     </p>
                 </div>
             ))}
