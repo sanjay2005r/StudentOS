@@ -47,8 +47,28 @@ const updateTaskStatus = (req, res) => {
         }
     );
 };
+
+const deleteTask = (req, res) => {
+    const { id } = req.params;
+    db.query(
+        "DELETE FROM tasks WHERE id=?",
+        [id],
+        (err, result) => {
+            if (err) {
+                return res
+                    .status(500)
+                    .json(err);
+            }
+            res.json({
+                message: "Task Deleted",
+            });
+        }
+    );
+};
+
 module.exports = {
     addTask,
     getTasks,
     updateTaskStatus,
+    deleteTask,
 };

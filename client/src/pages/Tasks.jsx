@@ -4,6 +4,7 @@ function Tasks({
     handleTaskChange,
     addTask,
     completeTask,
+    removeTask,
 }) {
     return (
         <div>
@@ -93,6 +94,13 @@ function Tasks({
                             </button>
                         )
                     }
+
+                    <br/> <br/>
+                    <button onClick={() =>
+                        removeTask(task.id)
+                    }>
+                        🗑 Delete
+                    </button>
                 </div>
             ))}
         </div>

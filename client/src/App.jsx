@@ -292,6 +292,19 @@ function App(){
         console.log(error);
       }
     };
+
+  const removeTask = async (id) => {
+    try {
+      await API.delete(
+        `/api/tasks/${id}`
+      );
+      fetchTasks();
+    }
+    catch(error){
+      console.lpg(error);
+    }
+  };
+
 // ***************************************************
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -656,6 +669,7 @@ function App(){
               handleTaskChange={handleTaskChange}
               addTask={addTask}
               completeTask={completeTask}
+              removeTask={removeTask}
             />
           }
         />
