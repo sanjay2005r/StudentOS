@@ -8,12 +8,35 @@ function Dashboard({
     productivityStatus,
     motivation,
     studyStreak,
+    xp,
+    level,
+    xpProgress,
 }) {
     return(
+        
         <div className="dashboard">
+              
             <h2>
                 Dashboard
             </h2>
+
+            <div className="xp-card">
+                <h2>
+                    🎮 Level {level}
+                </h2>
+                <p>
+                    XP: {xp}
+                </p>
+                <div className="xp-bar">
+                    <div
+                        className="xp-fill"
+                        style={{
+                            width:`${xpProgress}%`
+                        }}
+                    />
+                </div>
+            </div>
+
             <div className="dashboard-grid">
                 <div className="stat-card subjects-card">
                     <h3>📚 Subjects</h3>

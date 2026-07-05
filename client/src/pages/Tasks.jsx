@@ -73,7 +73,7 @@ function Tasks({
                     <p>
                         📅 {task.deadline}
                     </p>
-                    {/* <br/> */}
+                    <br/>
                     <span
                         className={
                             task.status === "Completed"? "completed" : "pending"
@@ -95,7 +95,7 @@ function Tasks({
                         )
                     }
 
-                    <br/> <br/>
+                    <br/>
                     <button onClick={() =>
                         removeTask(task.id)
                     }>

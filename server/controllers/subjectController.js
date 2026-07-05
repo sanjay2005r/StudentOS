@@ -30,7 +30,26 @@ const getSubjects = (req, res) => {
     });
 };
 
+const deleteSubject = (req, res) => {
+    const { id } = req.params;
+    db.query(
+        "DELETE FROM subjects WHERE id=?",
+        [id],
+        (err, result) => {
+            if (err){
+                return res
+                    .status(500)
+                    .json(err)
+            }
+            res.json({
+                message: "Subject Deleted",
+            });
+        }
+    );
+};
+
 module.exports = {
     addSubject,
     getSubjects,
+    deleteSubject,
 };

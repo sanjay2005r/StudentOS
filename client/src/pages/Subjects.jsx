@@ -3,6 +3,7 @@ function Subjects({
     subjectData,
     handleSubjectChange,
     addSubject,
+    removeSubject,
 }) {
     return(
         <div>
@@ -59,6 +60,13 @@ function Subjects({
                         {subject.progress}%
                         Complete
                     </p>
+                    <button
+                        onClick={()=>
+                            removeSubject(subject.id)
+                        }
+                    >
+                        🗑 Delete
+                    </button>
                 </div>
             ))}
         </div>

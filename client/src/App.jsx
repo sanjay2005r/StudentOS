@@ -33,6 +33,7 @@ function App(){
   const [timer, setTimer] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [xp, setXp] = useState(0);
 
   const [studyData, setStudyData] = useState({
     study_date: "",
@@ -67,6 +68,10 @@ function App(){
       pendingTasks * 5
     )
   );
+
+  const level = Math.floor(xp / 100) + 1;
+
+  const xpProgress = xp % 100;
 
   let productivityStatus = "";
   if (productivityScore >= 70){
@@ -199,6 +204,18 @@ function App(){
         progress: "",
       });
     } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeSubject = async (id) => {
+    try {
+      await API.delete(
+        `/api/subjects/${id}`
+      );
+      fetchSubjects();
+    }
+    catch (error){
       console.log(error);
     }
   };
@@ -646,6 +663,9 @@ function App(){
               productivityStatus={productivityStatus}
               motivation={motivation}
               studyStreak={studyStreak}
+              xp = {xp}
+              level={level}
+              xpProgress={xpProgress}
             />
           }
         />
@@ -657,6 +677,7 @@ function App(){
               subjectData={subjectData}
               handleSubjectChange={handleSubjectChange}
               addSubject={addSubject}
+              removeSubject={removeSubject}
             />
           }
         />
