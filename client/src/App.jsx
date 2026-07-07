@@ -298,17 +298,28 @@ function App(){
     }
   };
 // ---------------------------------------------------
-  const completeTask =
-    async (id) => {
-      try {
-        await API.put(
-          `/api/tasks/${id}`
-        );
-        fetchTasks();
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // const completeTask =
+  //   async (id) => {
+  //     try {
+  //       await API.put(
+  //         `/api/tasks/${id}`
+  //       );
+  //       fetchTasks();
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  const completeTask = async (id) => {
+    try {
+      await API.put(`/api/tasks/${id}`);
+
+      fetchTasks();
+      setXp((prevXp) => prevXp + 20);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const removeTask = async (id) => {
     try {
