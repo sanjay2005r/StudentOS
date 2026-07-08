@@ -71,6 +71,21 @@ function App(){
 
   const level = Math.floor(xp / 100) + 1;
 
+  const achievements = [];
+
+  if (tasks.some(task => task.status === "Completed")) {
+    achievements.push("🥇 First Task Completed");
+  }
+  if (subjects.length >= 3){
+    achievements.push("📚 Subject Collector");
+  }
+  if (totalStudyHours >= 10) {
+    achievements.push("⏰ 10 Study Hours");
+  }
+  if (xp >= 100){
+    achievements.push("🎮 Level Up!");
+  }
+
   const xpProgress = xp % 100;
 
   let productivityStatus = "";
@@ -676,7 +691,9 @@ function App(){
               studyStreak={studyStreak}
               xp = {xp}
               level={level}
+              achievements={achievements}
               xpProgress={xpProgress}
+              subjects={subjects}
             />
           }
         />

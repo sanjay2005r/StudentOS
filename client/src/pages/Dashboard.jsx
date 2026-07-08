@@ -1,3 +1,5 @@
+import SubjectChart from "../components/SubjectChart";
+
 function Dashboard({
     totalSubjects,
     totalTasks,
@@ -10,7 +12,9 @@ function Dashboard({
     studyStreak,
     xp,
     level,
+    achievements,
     xpProgress,
+    subjects,
 }) {
     return(
         
@@ -35,6 +39,26 @@ function Dashboard({
                         }}
                     />
                 </div>
+            </div>
+
+            <div className="achievement-card">
+                <h2>
+                    🏆 Achievements
+                </h2>
+                {
+                    achievements.length === 0 ?
+                    (
+                        <p>
+                            No achievements yet.
+                        </p>
+                    )
+                    :
+                    achievements.map((achievement, index) => (
+                        <p key={index}>
+                            {achievement}
+                        </p>
+                    ))
+                }
             </div>
 
             <div className="dashboard-grid">
@@ -73,6 +97,18 @@ function Dashboard({
             <p>
                 🔥 Study Streak: {studyStreak} Day
             </p>
+
+            <h2
+                style={{
+                    marginBottom: "15px",
+                }}
+            >
+                📊 Subject Progress
+            </h2>
+
+            <SubjectChart
+                subjects={subjects}
+            />
         </div>
     );
 }

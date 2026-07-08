@@ -248,3 +248,9 @@ button:hover{
   height: 100%;
   background: #f59e0b;
 }
+.achievement-card{
+  background: #1e293b;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 12px;
+}
