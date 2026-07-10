@@ -694,6 +694,7 @@ function App(){
               achievements={achievements}
               xpProgress={xpProgress}
               subjects={subjects}
+              studyHours={studyHours}
             />
           }
         />

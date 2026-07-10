@@ -1,4 +1,6 @@
 import SubjectChart from "../components/SubjectChart";
+import StudyChart from "../components/StudyChart";
+
 
 function Dashboard({
     totalSubjects,
@@ -15,6 +17,7 @@ function Dashboard({
     achievements,
     xpProgress,
     subjects,
+    studyHours,
 }) {
     return(
         
@@ -108,6 +111,11 @@ function Dashboard({
 
             <SubjectChart
                 subjects={subjects}
+            />
+            {/* <hr/> */}
+            <h2>📈 Study Hours Trend</h2>
+            <StudyChart
+                studyHours={studyHours}
             />
         </div>
     );
