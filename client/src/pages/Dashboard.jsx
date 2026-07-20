@@ -1,5 +1,6 @@
 import SubjectChart from "../components/SubjectChart";
 import StudyChart from "../components/StudyChart";
+import TaskPieChart from "../components/TaskPieChart";
 
 
 function Dashboard({
@@ -18,6 +19,7 @@ function Dashboard({
     xpProgress,
     subjects,
     studyHours,
+    tasks,
 }) {
     return(
         
@@ -116,6 +118,12 @@ function Dashboard({
             <h2>📈 Study Hours Trend</h2>
             <StudyChart
                 studyHours={studyHours}
+            />
+            <h2>
+                🥧 Task Status
+            </h2>
+            <TaskPieChart
+                tasks={tasks}
             />
         </div>
     );

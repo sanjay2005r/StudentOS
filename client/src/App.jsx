@@ -695,6 +695,7 @@ function App(){
               xpProgress={xpProgress}
               subjects={subjects}
               studyHours={studyHours}
+              tasks={tasks}
             />
           }
         />
