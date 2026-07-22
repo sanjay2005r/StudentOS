@@ -14,6 +14,7 @@ import Subjects from "./pages/Subjects";
 import Tasks from "./pages/Tasks";
 import Study from "./pages/Study";
 import Pomodoro from "./pages/Pomodoro";
+import Placement from "./pages/Placement";
 
 import "./App.css";
 import API from "./api/api";
@@ -672,6 +673,11 @@ function App(){
         <Link to="/pomodoro">
           Pomodoro
         </Link>
+        {" | "}
+
+        <Link to="/placement">
+          Placement
+        </Link>
       </nav>
       <br/>
 
@@ -752,8 +758,13 @@ function App(){
             />
           }
         />
+        <Route
+          path="/placement"
+          element={<Placement />}
+        />
 
       </Routes>
+      
       </div>
     </div>
   );

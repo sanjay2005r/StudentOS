@@ -78,6 +78,9 @@ function Sidebar() {
                 >
                     🍅 Pomodoro
                 </Link>
+                <Link to="/placement">
+                    💼 Placement
+                </Link>
             </div>
             
             <div className="sidebar-bottom">
