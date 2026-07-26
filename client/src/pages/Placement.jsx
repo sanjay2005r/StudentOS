@@ -116,6 +116,26 @@ function Placement() {
             <button type="submit">
                 Add Placement
             </button>
+            <br/><br/>
+            <h3>Saved Placements</h3>
+
+            {placements.map((placement)=> (
+                <div
+                    key={placement.id}
+                    style = {{
+                        border: "1px solid #444",
+                        padding: "15px",
+                        borderRadius: "10px",
+                        marginBottom: "10px",
+                    }}
+                >
+                    <h4>{placement.company}</h4>
+                    <p>💼 Role: {placement.role}</p>
+                    <p>📌 Status: {placement.status}</p>
+                    <p>🎯 Round: {placement.round_name}</p>
+                    <p>📅 Deadline: {placement.deadline}</p>
+                </div>
+            ))}
         </form>
     );
 }
