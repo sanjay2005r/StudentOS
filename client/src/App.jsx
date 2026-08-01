@@ -15,6 +15,8 @@ import Tasks from "./pages/Tasks";
 import Study from "./pages/Study";
 import Pomodoro from "./pages/Pomodoro";
 import Placement from "./pages/Placement";
+import Resources from "./pages/Resources";
+
 
 import "./App.css";
 import API from "./api/api";
@@ -761,6 +763,10 @@ function App(){
         <Route
           path="/placement"
           element={<Placement />}
+        />
+        <Route
+          path = "/resources"
+          element = {<Resources/>}
         />
 
       </Routes>

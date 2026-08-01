@@ -57,6 +57,30 @@ function Placement() {
         }
     };
 
+    const updateStatus = async (id, status) => {
+        try {
+            await API.put(
+                `/api/placements/${id}`,
+                { status }
+            );
+            fetchPlacements();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const removePlacement = async (id) => {
+        try {
+            await API.delete(
+                `/api/placements/${id}`
+            );
+            fetchPlacements();
+        }
+        catch(error){
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
         fetchPlacements();
     }, []);
@@ -132,8 +156,30 @@ function Placement() {
                     <h4>{placement.company}</h4>
                     <p>💼 Role: {placement.role}</p>
                     <p>📌 Status: {placement.status}</p>
+                    <select
+                        value={placement.status}
+                        onChange={(e) =>
+                            updateStatus(
+                                placement.id,
+                                e.target.value
+                            )
+                        }
+                    >
+                        <option>Applied</option>
+                        <option>OA</option>
+                        <option>Interview</option>
+                        <option>Selected</option>
+                        <option>Rejected</option>
+                    </select>
                     <p>🎯 Round: {placement.round_name}</p>
                     <p>📅 Deadline: {placement.deadline}</p>
+                    <button onClick={() =>
+                        removePlacement(
+                            placement.id
+                        )}
+                    >
+                        🗑 Delete
+                    </button>
                 </div>
             ))}
         </form>

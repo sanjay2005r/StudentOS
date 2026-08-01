@@ -40,7 +40,43 @@ const addPlacement = (req, res) => {
     );
 };
 
+const updatePlacementStatus = (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    db.query(
+        "UPDATE placements SET status=? WHERE id=?",
+        [status, id],
+        (err) => {
+            if (err){
+                return res.status(500).json(err);
+            }
+            res.json({
+                message: "Status Updated",
+            });
+        }
+    );
+};
+
+const deletePlacement = (req, res) => {
+    const { id } = req.params;
+    db.query(
+        "DELETE FROM placements WHERE id=?",
+        [id],
+        (err)=>{
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({
+                message: "Placement Deleted",
+            });
+        }
+    );
+};
+
 module.exports = {
     getPlacements,
     addPlacement,
+    updatePlacementStatus,
+    deletePlacement,
 };

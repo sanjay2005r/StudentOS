@@ -81,6 +81,10 @@ function Sidebar() {
                 <Link to="/placement">
                     💼 Placement
                 </Link>
+
+                <Link to="/resources">
+                    🔎 Resources
+                </Link>
             </div>
             
             <div className="sidebar-bottom">
