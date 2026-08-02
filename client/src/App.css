@@ -254,3 +254,37 @@ button:hover{
   margin-top: 20px;
   border-radius: 12px;
 }
+
+.focus-card{
+  background: #242424;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.focus-card button{
+  margin-top: 15px;
+}
+
+.resource-card{
+  background: #1f2937;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.resource-buttons{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.resource-buttons button{
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

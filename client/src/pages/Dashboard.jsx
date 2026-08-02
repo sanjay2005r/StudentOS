@@ -29,6 +29,18 @@ function Dashboard({
                 Dashboard
             </h2>
 
+            <div className="focus-card">
+                <h2>🎯 Today's Focus</h2>
+                <h3>Complete React Hooks</h3>
+                <p>
+                    Estimated Time: 2 Hours
+                </p>
+
+                <button>
+                    Mark as Complete
+                </button>
+            </div>
+
             <div className="xp-card">
                 <h2>
                     🎮 Level {level}
