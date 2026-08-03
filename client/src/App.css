@@ -288,3 +288,21 @@ button:hover{
   border-radius: 8px;
   cursor: pointer;
 }
+
+.dark{
+  background: #121212;
+  color: white;
+  min-height: 100vh;
+}
+
+.light{
+  background: white;
+  color: black;
+  min-height: 100vh;
+}
+
+:root{
+  --bg:#121212;
+  --card:#1e293b;
+  --text:white;
+}

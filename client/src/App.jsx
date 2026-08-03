@@ -37,6 +37,7 @@ function App(){
   const [isRunning, setIsRunning] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [xp, setXp] = useState(0);
+  const [theme, setTheme] = useState("dark");
 
   const [studyData, setStudyData] = useState({
     study_date: "",
@@ -404,373 +405,167 @@ function App(){
   const minutes = Math.floor(timer / 60);
   
   const seconds = timer % 60;
-  
-  // return (
-  //   <div className="container">
-  //     <h1>
-  //       🎓 StudentOS
-  //     </h1>
-  //     <p
-  //       style={{
-  //         textAlign: "center",
-  //         marginBottom: "20px"
-  //       }}
-  //     >
-  //       Saves Our Students 🚀
-  //     </p>
-  //     <br/>
-  //     <div className="dashboard">
-  //       <h2>Dashboard</h2>
-  //       <div className="dashboard-grid">
-  //         <div className="stat-card subjects-card">
-  //           <h3>📚 Subjects</h3>
-  //           <p>{totalSubjects}</p>
-  //         </div>
-  //         <div className="stat-card tasks-card">
-  //           <h3>📝 Tasks</h3>
-  //           <p>{totalTasks}</p>
-  //         </div>
-  //         <div className="stat-card pending-card">
-  //           <h3>⚠️ Pending</h3>
-  //           <p>{pendingTasks}</p>
-  //         </div>
-  //         <div className="stat-card hours-card">
-  //           <h3>⏰ Hours</h3>
-  //           <p>{totalStudyHours}</p>
-  //         </div>
-  //         <div className="stat-card average-card">
-  //           <h3>📈 Average</h3>
-  //           <p>{averageStudyHours}</p>
-  //         </div>
-  //         <div className="stat-card score-card">
-  //           <h3>🚀 Score</h3>
-  //           <p>{productivityScore}</p>
-  //         </div>
-  //       </div>
-  //       <br/>
-  //       <p>
-  //         🎯 Productivity Status:
-  //         {productivityStatus}
-  //       </p>
-  //       <p>
-  //         {motivation}
-  //       </p>
-  //       <p>
-  //         🔥 Study Streak:
-  //         {studyStreak} Day
-  //       </p>
-  //       <p>
-  //         🎯 Daily Goal:
-  //         {dailyGoal} hrs
-  //       </p>
-  //       <p>
-  //         📚 Today's Study:
-  //         {todayStudyHours} hrs
-  //       </p>
-  //       <p>
-  //         📊 Goal Progress:
-  //         {goalProgress}%
-  //       </p>
-  //     </div>
 
-  //     <form onSubmit={handleSubmit}>
-  //       <input
-  //         type="text"
-  //         name="name"
-  //         placeholder="Enter Name"
-  //         onChange={handleChange}
-  //         value={formData.name}
-  //       />
-  //       <br/><br/>
 
-  //       <input
-  //         type="email"
-  //         name="email"
-  //         placeholder="Enter Email"
-  //         onChange={handleChange}
-  //         value={formData.email}
-  //       />
-  //       <br/><br/>
 
-  //       <input
-  //         type="password"
-  //         name="password"
-  //         placeholder="Enter Password"
-  //         onChange={handleChange}
-  //         value={formData.password}
-  //       />
-  //       <br/><br/>
 
-  //       <button type="submit">
-  //         Register
-  //       </button>
-  //     </form>
-  //     <br/>
 
-  //     <h2>All Users</h2>
-  //     {users.map((user)=> (
-  //       <div key={user.id}>
-  //         <p>
-  //           {user.name} - {user.email}
-  //         </p>
-  //       </div>
-  //     ))}
 
-  //     <h2>Add Subject</h2>
-  //     <form onSubmit={addSubject}>
-  //       <input
-  //         type= "text"
-  //         name= "name"
-  //         placeholder= "Subject Name"
-  //         value={subjectData.name}
-  //         onChange={handleSubjectChange}
-  //       />
-  //       <br/><br/>
-  //       <input
-  //         type="number"
-  //         name="progress"
-  //         placeholder="Progress %"
-  //         value={subjectData.progress}
-  //         onChange={handleSubjectChange}
-  //       />
-  //       <br/><br/>
-  //       <button type="submit">
-  //         Add Subject
-  //       </button>
-  //     </form>
-  //     <br/>
 
-  //     <h2>Subjects</h2>
-  //     {subjects.map((subject)=>(
-  //       <div key={subject.id}>
-  //         <p>
-  //           {subject.name} - {subject.progress}% 
-  //         </p>
-  //       </div>
-  //     ))}
 
-  //     <h2>Add Task</h2>
-  //     <form onSubmit={addTask}>
-  //       <input
-  //         type="text"
-  //         name="title"
-  //         placeholder="Task Title"
-  //         value={taskData.title}
-  //         onChange={handleTaskChange}
-  //       />
-  //       <br/><br/>
 
-  //       <input
-  //         type="date"
-  //         name="deadline"
-  //         value={taskData.deadline}
-  //         onChange={handleTaskChange}
-  //       />
-  //       <br/><br/>
 
-  //       <select
-  //         name="status"
-  //         value={taskData.status}
-  //         onChange={handleTaskChange}
-  //       >
-  //         <option value="Pending">Pending</option>
-  //         <option value="Completed">Completed</option>
-  //       </select>
-  //       <br/><br/>
-  //       <button type="submit">
-  //         Add task
-  //       </button>
-  //     </form>
-  //     <br/>
 
-  //     <h2>Tasks</h2>
-  //     {tasks.map((task)=> (
-  //       <div key = {task.id}>
-  //         <p>
-  //           {task.title} | {task.deadline} | {task.status}
-  //         </p>
-  //       </div>
-  //     ))}
-  //     <br/>
-  //     <h2>Study Hours</h2>
-  //     <form onSubmit={addStudyHour}>
-  //       <input
-  //         type="date"
-  //         name="study_date"
-  //         value={studyData.study_date}
-  //         onChange={handleStudyChange}
-  //       />
-  //       <br/><br/>
 
-  //       <input
-  //         type="number"
-  //         name="hours"
-  //         placeholder="Hours studied"
-  //         value={studyData.hours}
-  //         onChange={handleStudyChange}
-  //       />
-  //       <br/><br/>
 
-  //       <button type="submit">
-  //         Add Study Hours
-  //       </button>
-  //     </form>
 
-  //     <br/>
-
-  //     {studyHours.map((study)=> (
-  //       <div key={study.id}>
-  //         <p>
-  //           {study.study_date} - {study.hours} hrs
-  //         </p>
-  //       </div>
-  //     ))}
-  //     <br/>
-
-  //     <h2>🍅 Pomodoro</h2>
-  //     <div className="dashboard">
-  //       <h1>
-  //         {timer}:00
-  //       </h1>
-  //       <button>
-  //         Start
-  //       </button>
-  //       <button>
-  //         Reset
-  //       </button>
-  //     </div>
-
-  //   </div>
-
-  // );
   return (
-    <div className="app-layout">
-      <Sidebar/>
-      <div className="main-content">
-        <Navbar
-          pendingTasks={pendingTasks}
-        />
-      <h1>🎓 StudentOS</h1>
-      <nav>
-        <Link to="/">
-          Dashboard
-        </Link>
-        {" | "}
+    <div className= {theme}>
 
-        <Link to="/subjects">
-          Subjects
-        </Link>
-        {" | "}
+      <div className="app-layout">
+        <Sidebar/>
+        <div className="main-content">
+          <Navbar
+            pendingTasks={pendingTasks}
+          />
+        <h1>🎓 StudentOS</h1>
+        <nav>
+          <Link to="/">
+            Dashboard
+          </Link>
+          {" | "}
 
-        <Link to="/tasks">
-          Tasks
-        </Link>
-        {" | "}
+          <Link to="/subjects">
+            Subjects
+          </Link>
+          {" | "}
 
-        <Link to="/study">
-          Study
-        </Link>
-        {" | "}
+          <Link to="/tasks">
+            Tasks
+          </Link>
+          {" | "}
 
-        <Link to="/pomodoro">
-          Pomodoro
-        </Link>
-        {" | "}
+          <Link to="/study">
+            Study
+          </Link>
+          {" | "}
 
-        <Link to="/placement">
-          Placement
-        </Link>
-      </nav>
-      <br/>
+          <Link to="/pomodoro">
+            Pomodoro
+          </Link>
+          {" | "}
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Dashboard
-              totalSubjects={totalSubjects}
-              totalTasks={totalTasks}
-              pendingTasks={pendingTasks}
-              totalStudyHours={totalStudyHours}
-              averageStudyHours={averageStudyHours}
-              productivityScore={productivityScore}
-              productivityStatus={productivityStatus}
-              motivation={motivation}
-              studyStreak={studyStreak}
-              xp = {xp}
-              level={level}
-              achievements={achievements}
-              xpProgress={xpProgress}
-              subjects={subjects}
-              studyHours={studyHours}
-              tasks={tasks}
-            />
+          <Link to="/placement">
+            Placement
+          </Link>
+        </nav>
+        <br/>
+        <button
+          onClick={() =>
+            setTheme(
+              theme === "dark"
+                ? "light"
+                : "dark"
+            )
           }
-        />
-        <Route
-          path="/subjects"
-          element={
-            <Subjects 
-              subjects={subjects}
-              subjectData={subjectData}
-              handleSubjectChange={handleSubjectChange}
-              addSubject={addSubject}
-              removeSubject={removeSubject}
-            />
+        >
+          {
+            theme === "dark"
+              ? "☀️ Light Mode"
+              : "🌙 Dark Mode"
           }
-        />
-        <Route
-          path="/tasks"
-          element={
-            <Tasks 
-              tasks={tasks}
-              taskData={taskData}
-              handleTaskChange={handleTaskChange}
-              addTask={addTask}
-              completeTask={completeTask}
-              removeTask={removeTask}
-            />
-          }
-        />
-        <Route
-          path="/study"
-          element={
-            <Study 
-              studyHours={studyHours}
-              studyData={studyData}
-              handleStudyChange={handleStudyChange}
-              addStudyHour={addStudyHour}
-            />
-          }
-        />
-        <Route
-          path="/pomodoro"
-          element={
-            <Pomodoro
-              timer={`${minutes}:${seconds
-                    .toString()
-                    .padStart(2, "0")}`}
-              startTimer={startTimer}
-              pauseTimer={pauseTimer}
-              resetTimer={resetTimer}
-              isRunning={isRunning}
-              hasStarted={hasStarted}
-              setPomodoro25={setPomodoro25}
-              setPomodoro50={setPomodoro50}
-            />
-          }
-        />
-        <Route
-          path="/placement"
-          element={<Placement />}
-        />
-        <Route
-          path = "/resources"
-          element = {<Resources/>}
-        />
+        </button>
+        {/* <br/><br/> */}
 
-      </Routes>
-      
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Dashboard
+                totalSubjects={totalSubjects}
+                totalTasks={totalTasks}
+                pendingTasks={pendingTasks}
+                totalStudyHours={totalStudyHours}
+                averageStudyHours={averageStudyHours}
+                productivityScore={productivityScore}
+                productivityStatus={productivityStatus}
+                motivation={motivation}
+                studyStreak={studyStreak}
+                xp = {xp}
+                level={level}
+                achievements={achievements}
+                xpProgress={xpProgress}
+                subjects={subjects}
+                studyHours={studyHours}
+                tasks={tasks}
+              />
+            }
+          />
+          <Route
+            path="/subjects"
+            element={
+              <Subjects 
+                subjects={subjects}
+                subjectData={subjectData}
+                handleSubjectChange={handleSubjectChange}
+                addSubject={addSubject}
+                removeSubject={removeSubject}
+              />
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <Tasks 
+                tasks={tasks}
+                taskData={taskData}
+                handleTaskChange={handleTaskChange}
+                addTask={addTask}
+                completeTask={completeTask}
+                removeTask={removeTask}
+              />
+            }
+          />
+          <Route
+            path="/study"
+            element={
+              <Study 
+                studyHours={studyHours}
+                studyData={studyData}
+                handleStudyChange={handleStudyChange}
+                addStudyHour={addStudyHour}
+              />
+            }
+          />
+          <Route
+            path="/pomodoro"
+            element={
+              <Pomodoro
+                timer={`${minutes}:${seconds
+                      .toString()
+                      .padStart(2, "0")}`}
+                startTimer={startTimer}
+                pauseTimer={pauseTimer}
+                resetTimer={resetTimer}
+                isRunning={isRunning}
+                hasStarted={hasStarted}
+                setPomodoro25={setPomodoro25}
+                setPomodoro50={setPomodoro50}
+              />
+            }
+          />
+          <Route
+            path="/placement"
+            element={<Placement />}
+          />
+          <Route
+            path = "/resources"
+            element = {<Resources/>}
+          />
+
+        </Routes>
+        
+        </div>
       </div>
     </div>
   );
