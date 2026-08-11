@@ -1,16 +1,19 @@
+:root{
+  --bg: #0f172a;
+  --card: #1e293b;
+  --card-light: #334155;
+  --text: white;
+  --text-secondary: #cbd5e1;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  background: 
-    linear-gradient(
-      135deg,
-      #0f172a,
-      #1e293b
-    );
-  color: white;
+body {
+  background: var(--bg);
+  color: var(--text);
   font-family: Arial, sans-serif;
 }
 .container{
@@ -20,7 +23,7 @@ body{
   padding: 20px;
 }
 .dashboard{
-  background: #1e293b;
+  background: var(--card);
   padding: 20px;
   border-radius: 15px;
   margin-bottom: 20px;
@@ -32,7 +35,7 @@ body{
   margin-top: 20px;
 }
 .stat-card{
-  background: #334155;
+  background: var(--card-light);
   padding: 20px;
   border-radius: 12px;
   text-align: center;
@@ -51,7 +54,7 @@ body{
   font-weight: bold;
 }
 .card{
-  background: #334155;
+  background: var(--card-light);
   padding: 15px;
   margin:10px 0;
   border-radius: 10px;
@@ -79,7 +82,7 @@ button{
   cursor:pointer;
 }
 form{
-  background: #1e293b;
+  background: var(--card);
   padding: 20px;
   border-radius: 15px;
   margin: 20px 0;
@@ -123,7 +126,7 @@ button:hover{
 }
 .sidebar{
   width: 220px;
-  background: #111827;
+  background: var(--card);
   padding:20px;
   display: flex;
   flex-direction: column;
@@ -145,7 +148,7 @@ button:hover{
   padding: 20px;
 }
 .navbar{
-  background: #111827;
+  background: var(--card);
   padding:20px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -171,7 +174,7 @@ button:hover{
 }
 .profile-card p{
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 .sidebar hr{
   margin: 20px 0;
@@ -191,7 +194,7 @@ button:hover{
   flex-direction: column;
 }
 .subject-card{
-  background: #1e293b;
+  background: var(--card);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -211,7 +214,7 @@ button:hover{
   border-radius: 20px;
 }
 .task-card{
-  background:#1e293b;
+  background:var(--card);
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 12px;
@@ -232,7 +235,7 @@ button:hover{
   font-weight: bold;
 }
 .xp-card{
-  background:#1e293b;
+  background:var(--card);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -249,14 +252,14 @@ button:hover{
   background: #f59e0b;
 }
 .achievement-card{
-  background: #1e293b;
+  background: var(--card);
   padding: 20px;
   margin-top: 20px;
   border-radius: 12px;
 }
 
 .focus-card{
-  background: #242424;
+  background: var(--card);
   padding: 20px;
   border-radius: 15px;
   margin-bottom: 25px;
@@ -267,8 +270,8 @@ button:hover{
 }
 
 .resource-card{
-  background: #1f2937;
-  color: white;
+  background: var(--card);
+  color: var(--text);
   padding: 20px;
   border-radius: 15px;
   margin-top: 20px;
@@ -288,17 +291,20 @@ button:hover{
   border-radius: 8px;
   cursor: pointer;
 }
-
-.dark{
-  background: #121212;
-  color: white;
-  min-height: 100vh;
+.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --card-light: #334155;
+  --text: white;
+  --text-secondary: #cbd5e1;
 }
 
-.light{
-  background: white;
-  color: black;
-  min-height: 100vh;
+.light {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --card-light: #e2e8f0;
+  --text: #0f172a;
+  --text-secondary: #475569;
 }
 
 :root{
