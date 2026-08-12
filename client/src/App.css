@@ -1,9 +1,19 @@
-:root{
+:root {
   --bg: #0f172a;
   --card: #1e293b;
   --card-light: #334155;
+
   --text: white;
   --text-secondary: #cbd5e1;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+
+  --border: #334155;
 }
 
 *{
@@ -77,22 +87,28 @@ button{
   border: none;
   border-radius: 8px;
   margin:5px;
+
+  background: var(--card-light);
+  color: var(--text);
 }
-button{
-  cursor:pointer;
-}
+
 form{
   background: var(--card);
   padding: 20px;
   border-radius: 15px;
   margin: 20px 0;
 }
-button{
-  background: #2563eb;
+button {
+  background: var(--primary);
   color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin: 5px;
+  cursor: pointer;
 }
-button:hover{
-  opacity: 0.9;
+button:hover {
+  background: var(--primary-hover);
 }
 .dashboard h1{
   text-align: center;
@@ -133,7 +149,7 @@ button:hover{
   height: 100vh;
 }
 .sidebar a{
-  color: white;
+  color: var(--text);
   text-decoration: none;
   margin: 12px 0;
   padding: 10px;
@@ -157,8 +173,9 @@ button:hover{
   justify-content: space-between;
   align-items: center;
 }
-.sidebar .active{
-  background: #2563eb;
+.sidebar .active {
+  background: var(--primary);
+  color: white;
   font-weight: bold;
 }
 .profile-card{
@@ -176,9 +193,9 @@ button:hover{
   font-size: 14px;
   color: var(--text-secondary);
 }
-.sidebar hr{
+.sidebar hr {
   margin: 20px 0;
-  border: 1px solid #334155;
+  border: 1px solid var(--border);
 }
 .sidebar-links{
   margin-top: auto;
@@ -203,7 +220,7 @@ button:hover{
 .progress-bar{
   width: 100%;
   height: 12px;
-  background: #334155;
+  background: var(--card-light);
   border-radius: 20px;
   overflow: hidden;
   margin: 15px 0;
@@ -220,15 +237,15 @@ button:hover{
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
-.pending{
-  background: #f59e0b;
+.pending {
+  background: var(--warning);
   padding: 6px 12px;
   border-radius: 20px;
   color: white;
   font-weight: bold;
 }
-.completed{
-  background: #10b981;
+.completed {
+  background: var(--success);
   padding: 6px 12px;
   border-radius: 20px;
   color: white;
@@ -243,7 +260,7 @@ button:hover{
 .xp-bar{
   width: 100%;
   height: 12px;
-  background: #334155;
+  background: var(--card-light);
   border-radius: 20px;
   overflow: hidden;
 }
@@ -295,16 +312,36 @@ button:hover{
   --bg: #0f172a;
   --card: #1e293b;
   --card-light: #334155;
+
   --text: white;
   --text-secondary: #cbd5e1;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+
+  --border: #334155;
 }
 
 .light {
   --bg: #f8fafc;
   --card: #ffffff;
   --card-light: #e2e8f0;
+
   --text: #0f172a;
   --text-secondary: #475569;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+
+  --border: #cbd5e1;
 }
 
 :root{
@@ -312,3 +349,4 @@ button:hover{
   --card:#1e293b;
   --text:white;
 }
+.sidebar .active {
