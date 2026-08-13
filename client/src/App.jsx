@@ -37,7 +37,9 @@ function App(){
   const [isRunning, setIsRunning] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [xp, setXp] = useState(0);
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "dark"
+  );
 
   const [studyData, setStudyData] = useState({
     study_date: "",
@@ -461,13 +463,18 @@ function App(){
         </nav>
         <br/>
         <button
-          onClick={() =>
-            setTheme(
+          onClick={() => {
+            const newTheme =
               theme === "dark"
                 ? "light"
-                : "dark"
-            )
-          }
+                : "dark";
+            setTheme(newTheme);
+
+            localStorage.setItem(
+              "theme",
+              newTheme
+            );
+          }}
         >
           {
             theme === "dark"
