@@ -11,10 +11,11 @@ import {
 function StudyChart({ studyHours }) {
     return (
         <div
+            className="study-chart"
             style={{
                 width: "100%",
                 height: 320,
-                background: "#1e293b",
+                background: "var(--chart-bg)",
                 padding: "20px",
                 borderRadius: "12px",
                 marginTop: "20px",
@@ -23,21 +24,22 @@ function StudyChart({ studyHours }) {
             <ResponsiveContainer>
                 <LineChart data={studyHours}>
                     <CartesianGrid
-                        stroke="#475569"
+                        stroke="var(--chart-grid)"
                         strokeDasharray="3 3"
                     />
                     <XAxis
                         dataKey="study_date"
-                        stroke="#ffffff"
+                        stroke="var(--chart-text)"
                     />
                     <YAxis
-                        stroke="#ffffff"
+                        stroke="var(--chart-text)"
                     />
                     <Tooltip
                         contentStyle={{
-                            background: "#0f172a",
+                            background: "var(--chart-tooltip-bg)",
                             border: "none",
                             borderRadius: "10px",
+                            color: "var(--chart-text)",
                         }}
                     />
                     <Line

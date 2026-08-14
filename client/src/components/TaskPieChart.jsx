@@ -32,10 +32,11 @@ function TaskPieChart({
 
     return(
         <div
+            className="task-pie-chart"
             style={{
                 width: "100%",
                 height: 320,
-                background: "#1e293b",
+                background: "var(--chart-bg)",
                 padding: "20px",
                 borderRadius: "12px",
                 marginTop: "20px",
@@ -65,6 +66,12 @@ function TaskPieChart({
                         }
                     </Pie>
                     <Tooltip
+                        contentStyle={{
+                            background: "var(--chart-tooltip-bg)",
+                            border: "none",
+                            borderRadius: "10px",
+                            color: "var(--chart-text)",
+                        }}
                         formatter={(value, name) => [
                             `${value} Tasks`,
                             name,
