@@ -5,28 +5,32 @@ import {
 } from "react-router-dom";
 
 function Sidebar() {
+
     const location = useLocation();
+
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
-            {/* Sidebar Toggle Button */}
             <button
                 className="sidebar-toggle"
                 onClick={() => setIsOpen(!isOpen)}
-                title={isOpen ? "Close Sidebar" : "Open Sidebar"}
             >
                 ☰
             </button>
 
-            {/* Sidebar */}
-            <div className={`sidebar ${isOpen ? "sidebar-open" : ""}`}>
+            <div
+                className={`sidebar ${
+                    isOpen ? "sidebar-open" : ""
+                }`}
+            >
 
                 <h2>🎓 StudentOS</h2>
 
                 <br />
 
                 <div className="profile-card">
+
                     <div className="avatar">
                         👤
                     </div>
@@ -38,7 +42,9 @@ function Sidebar() {
                     <p>
                         Student Developer
                     </p>
+
                 </div>
+
 
                 <div className="sidebar-links">
 
@@ -49,10 +55,10 @@ function Sidebar() {
                                 ? "active"
                                 : ""
                         }
-                        onClick={() => setIsOpen(false)}
                     >
                         🏠 Dashboard
                     </Link>
+
 
                     <Link
                         to="/subjects"
@@ -61,10 +67,10 @@ function Sidebar() {
                                 ? "active"
                                 : ""
                         }
-                        onClick={() => setIsOpen(false)}
                     >
                         📚 Subjects
                     </Link>
+
 
                     <Link
                         to="/tasks"
@@ -73,10 +79,10 @@ function Sidebar() {
                                 ? "active"
                                 : ""
                         }
-                        onClick={() => setIsOpen(false)}
                     >
                         📝 Tasks
                     </Link>
+
 
                     <Link
                         to="/study"
@@ -85,10 +91,10 @@ function Sidebar() {
                                 ? "active"
                                 : ""
                         }
-                        onClick={() => setIsOpen(false)}
                     >
                         ⏰ Study
                     </Link>
+
 
                     <Link
                         to="/pomodoro"
@@ -97,10 +103,10 @@ function Sidebar() {
                                 ? "active"
                                 : ""
                         }
-                        onClick={() => setIsOpen(false)}
                     >
                         🍅 Pomodoro
                     </Link>
+
 
                     <Link
                         to="/placement"
@@ -109,10 +115,10 @@ function Sidebar() {
                                 ? "active"
                                 : ""
                         }
-                        onClick={() => setIsOpen(false)}
                     >
                         💼 Placement
                     </Link>
+
 
                     <Link
                         to="/resources"
@@ -121,12 +127,12 @@ function Sidebar() {
                                 ? "active"
                                 : ""
                         }
-                        onClick={() => setIsOpen(false)}
                     >
                         🔎 Resources
                     </Link>
 
                 </div>
+
 
                 <div className="sidebar-bottom">
 
