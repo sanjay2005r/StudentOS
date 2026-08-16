@@ -21,9 +21,33 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  background: var(--bg);
-  color: var(--text);
+
+:root {
+  --text-color: #ffffff;
+  --card-bg: #1e293b;
+  --secondary-text: #cbd5e1;
+}
+
+.container.light {
+  --text-color: #111827;
+  --card-bg: #ffffff;
+  --secondary-text: #475569;
+}
+
+.container.dark {
+  --text-color: #ffffff;
+  --card-bg: #1e293b;
+  --secondary-text: #cbd5e1;
+}
+
+body{
+  background: 
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #1e293b
+    );
+  color: var(--text-color);
   font-family: Arial, sans-serif;
 }
 .container{
@@ -408,7 +432,7 @@ select,
 
 .container.dark{
   background: #121212;
-  color: white;
+  color: var(--text-color);
   min-height: 100vh;
 
   --chart-bg: #1e293b;
@@ -419,7 +443,7 @@ select,
 
 .container.light{
   background: #f8fafc;
-  color: #0f172a;
+  color: var(--text-color);
   min-height: 100vh;
 
   --chart-bg: #ffffff;
@@ -690,4 +714,34 @@ select,
         transform: translateX(0);
         position: relative;
     }
+}
+
+
+/* ============================= */
+/* THEME TEXT POLISH */
+/* ============================= */
+
+.container.light .dashboard,
+.container.light .card,
+.container.light .subject-card,
+.container.light .task-card,
+.container.light .xp-card,
+.container.light .achievement-card,
+.container.light .focus-card,
+.container.light .resource-card {
+  color: #111827;
+}
+
+/* ---------------------------------- */
+
+
+.container.light input,
+.container.light select {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #cbd5e1;
+}
+
+.container.light input::placeholder {
+  color: #64748b;
 }
