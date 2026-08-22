@@ -3,7 +3,7 @@
   --card: #1e293b;
   --card-light: #334155;
 
-  --text: white;
+  --text: #ffffff;
   --text-secondary: #cbd5e1;
 
   --primary: #2563eb;
@@ -22,12 +22,54 @@
   box-sizing: border-box;
 }
 
-:root {
-  --text-color: #ffffff;
-  --card-bg: #1e293b;
-  --secondary-text: #cbd5e1;
+/* ========================= */
+/* DARK THEME */
+/* ========================= */
+
+.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --card-light: #334155;
+
+  --text: #ffffff;
+  --text-secondary: #cbd5e1;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+
+  --border: #334155;
 }
 
+
+/* ========================= */
+/* LIGHT THEME */
+/* ========================= */
+
+.light {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --card-light: #e2e8f0;
+
+  --text: #0f172a;
+  --text-secondary: #475569;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+
+  --border: #cbd5e1;
+}
+
+
+
+/*
 .container.light {
   --text-color: #111827;
   --card-bg: #ffffff;
@@ -39,17 +81,25 @@
   --card-bg: #1e293b;
   --secondary-text: #cbd5e1;
 }
+*/
 
-body{
-  background: 
-    linear-gradient(
-      135deg,
-      #0f172a,
-      #1e293b
-    );
-  color: var(--text-color);
+
+body {
+  background: var(--bg);
+  color: var(--text);
   font-family: Arial, sans-serif;
 }
+
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
 .container{
   width: 90%;
   max-width: 1200px;
@@ -164,18 +214,11 @@ button:hover {
   display:flex;
   min-height: 100vh;
 }
-/* .sidebar{
-  width: 220px;
-  background: var(--card);
-  padding:20px;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-} */
+
 
 .sidebar {
   width: 220px;
-  background: #111827;
+  background: var(--card);
   padding: 20px;
 
   display: flex;
@@ -204,12 +247,13 @@ button:hover {
   border-radius: 8px;
 }
 .sidebar a:hover{
-  background: #334155;
+  background: var(--card-light);
 }
 
 .main-content{
   flex: 1;
   padding: 20px;
+  color: var(--text);
 }
 .navbar{
   background: var(--card);
@@ -430,27 +474,8 @@ select,
     border-color 0.3s ease;
 }
 
-.container.dark{
-  background: #121212;
-  color: var(--text-color);
-  min-height: 100vh;
 
-  --chart-bg: #1e293b;
-  --chart-grid: #475569;
-  --chart-text: #ffffff;
-  --chart-tooltip-bg: #0f172a;
-}
 
-.container.light{
-  background: #f8fafc;
-  color: var(--text-color);
-  min-height: 100vh;
-
-  --chart-bg: #ffffff;
-  --chart-grid: #cbd5e1;
-  --chart-text: #0f172a;
-  --chart-tooltip-bg: #ffffff;
-}
 
 /* ============================= */
 /* RESPONSIVE DESIGN */
@@ -721,27 +746,28 @@ select,
 /* THEME TEXT POLISH */
 /* ============================= */
 
-.container.light .dashboard,
-.container.light .card,
-.container.light .subject-card,
-.container.light .task-card,
-.container.light .xp-card,
-.container.light .achievement-card,
-.container.light .focus-card,
-.container.light .resource-card {
-  color: #111827;
+.light .dashboard,
+.light .card,
+.light .subject-card,
+.light .task-card,
+.light .xp-card,
+.light .achievement-card,
+.light .focus-card,
+.light .resource-card,
+.light .navbar {
+  color: var(--text);
 }
 
 /* ---------------------------------- */
 
 
-.container.light input,
-.container.light select {
+.light input,
+.light select {
   background: #ffffff;
   color: #111827;
   border: 1px solid #cbd5e1;
 }
 
-.container.light input::placeholder {
+.light input::placeholder {
   color: #64748b;
 }

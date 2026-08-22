@@ -8,14 +8,14 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-function StudyChart({ studyHours }) {
+function StudyChart({ studyHours, theme }) {
     return (
         <div
             className="study-chart"
             style={{
                 width: "100%",
                 height: 320,
-                background: "var(--chart-bg)",
+                background: theme === "light" ? "#ffffff" : "#1e293b",
                 padding: "20px",
                 borderRadius: "12px",
                 marginTop: "20px",
@@ -24,22 +24,22 @@ function StudyChart({ studyHours }) {
             <ResponsiveContainer>
                 <LineChart data={studyHours}>
                     <CartesianGrid
-                        stroke="var(--chart-grid)"
+                        stroke={theme === "light" ? "#cbd5e1" : "#475569"}
                         strokeDasharray="3 3"
                     />
                     <XAxis
                         dataKey="study_date"
-                        stroke="var(--chart-text)"
+                        stroke = {theme === "light" ? "#0f172a" : "#ffffff"}
                     />
                     <YAxis
-                        stroke="var(--chart-text)"
+                        stroke = {theme === "light" ? "#0f172a" : "#ffffff"}
                     />
                     <Tooltip
                         contentStyle={{
-                            background: "var(--chart-tooltip-bg)",
+                            background: theme === "light" ? "#ffffff" : "#0f172a",
+                            color: theme === "light" ? "#0f172a" : "#ffffff",
                             border: "none",
                             borderRadius: "10px",
-                            color: "var(--chart-text)",
                         }}
                     />
                     <Line

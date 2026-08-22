@@ -20,6 +20,7 @@ function Dashboard({
     subjects,
     studyHours,
     tasks,
+    theme,
 }) {
     return(
         
@@ -130,6 +131,7 @@ function Dashboard({
             <h2>📈 Study Hours Trend</h2>
             <StudyChart
                 studyHours={studyHours}
+                theme={theme}
             />
             <h2>
                 🥧 Task Status

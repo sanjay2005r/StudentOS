@@ -422,7 +422,7 @@ function App(){
 
 
   return (
-    <div className= {theme}>
+    <div className= {`app ${theme}`}>
 
       <div className="app-layout">
         <Sidebar/>
@@ -489,22 +489,23 @@ function App(){
             path="/"
             element={
               <Dashboard
-                totalSubjects={totalSubjects}
-                totalTasks={totalTasks}
-                pendingTasks={pendingTasks}
-                totalStudyHours={totalStudyHours}
-                averageStudyHours={averageStudyHours}
-                productivityScore={productivityScore}
-                productivityStatus={productivityStatus}
-                motivation={motivation}
-                studyStreak={studyStreak}
-                xp = {xp}
-                level={level}
-                achievements={achievements}
-                xpProgress={xpProgress}
-                subjects={subjects}
-                studyHours={studyHours}
-                tasks={tasks}
+                  totalSubjects={totalSubjects}
+                  totalTasks={totalTasks}
+                  pendingTasks={pendingTasks}
+                  totalStudyHours={totalStudyHours}
+                  averageStudyHours={averageStudyHours}
+                  productivityScore={productivityScore}
+                  productivityStatus={productivityStatus}
+                  motivation={motivation}
+                  studyStreak={studyStreak}
+                  xp={xp}
+                  level={level}
+                  achievements={achievements}
+                  xpProgress={xpProgress}
+                  subjects={subjects}
+                  studyHours={studyHours}
+                  tasks={tasks}
+                  theme={theme}
               />
             }
           />
